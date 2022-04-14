@@ -1,0 +1,181 @@
+                                                 COMANDI GIT LOCALE
+
+creo una cartella(mi ci sposto da bash o con il mouse) al suo interno lancio il comando :
+
+git init----> inizializza una cartella .init dove ho il flusso del mio lavoro (il branch master è in locale, devo visualizzare i file nascosti)
+              se voglio far ripartire il progetto posso cancellare .git (cancellando cosi lo storico)
+/// file in STATO MODIFY
+git status----> mostra lo stato dei file all'interno del progetto(dove siamo , se sono stati aggiunti commit e file non staggiati da git)
+                , inidicazioni come risolvere alcuni problemi)
+
+git add nomefile.tipo nomefile2.tipo --> mi aggiunge uno o più file
+git add.                             --->mi aggiunge tutti i file
+git add*.txt-------> mi aggiunge un set di file (tutti i file di un certo tipo)
+
+/// una volta aggiunto il file , il file si trova in stato STAGED mo non sono stati ancora committati 
+ 
+git commit ---> mi si apre un editor testuale per effettuare il commit(è possibile configuralo o cambiarlo)
+
+comandi editor 
+i -->per insierire testo nel commit,
+tasto esc--> esco da modalità scrittura
+weq -->per uscire dall'editor
+
+
+git commit -m "messaggio che descrive la commit " -m  " descrizione"
+
+////rimuovere file e togliere commit
+
+git restore --staged nomefile.tipo ----> rimuove un file dalla index di git
+
+git log -----> mi da lo storico delle commit eseguite fino ad ora , git salva le commit in formato chiave valoore
+               dove la chiave è univoca (stringa di 40 caratteri SCIA1), ho anche autore darta e testo commit, e la posizione
+               dove ci troviamo
+
+git log --oneline --reverse ----> cosi mi da log compatto, con id commit (chiave), dove siamo adesso e titolo commit
+
+                             //// CANCELLARE COMMIT E RISOLVERE PROBLEMI
+CASO 1: ABBIAMO COMMITTATO E CI SIAMO DIMENTICATI DI AGGIUNGERE UNO O PIù FILE O CI SIAMO DIMENTICATI DI AGGIUNGERE IL MESSAGGIO
+
+git  commit --amend ----> apre l'editor e mi permette di modificare l'ultima modifica effettuata
+
+
+CASO 2: CON git reset (--mixed(quella di default da omettere) -- soft --hard)
+ git reset --soft elimina la commit e riporta appena prima il comando commit e subito dopo add
+ 
+ git reset --mixed  riporta allo stato prima dell'aggiunta dei file con add
+
+ git reset --hard---> cancello sia commit sia ultimi file aggiunti(ripristino stato precedente, attenzione perchè cancello i file)
+
+                                       CANCELLARE UNA COMMIT IN MANIERA EFFICENTE
+
+1. git log --oneline---> ho lista commit 
+2. git reset --soft idDallogGit
+
+CANCELLARE più COMMIT
+1
+git reset --soft HEAD^    ------> HEAD è il puntatore si log , e con ^ indico di quante posizioni torno indietro,^^^ 3 commit
+
+git reset --soft HEAD~numero    ------> con la tilde e il numero mi torna indietro di quel numero rispetto l'ultimo commit
+
+2
+git reset   oppure git reset --mixed                  ------> riporta a stato precente all'add ma senza cancellare i file, se applico ciò , il log non sarà verde e 
+                                        e mi dirà che ci sono dei file modificati o aggiunti da mettere in stage con git add
+CANCELLARE SIA COMMIT CHE FILE
+
+3 
+git reset --hard HEAD^                  da usare solo se le commit sono in locale o nessuno ha preso i nostri file, mi riporta allo stato 
+                                        precedente al commit cancellando anche i file 
+
+
+                                          
+   
+
+                                 EVITARE CHE FILE PRIVATI SIANO CONDIVISI CON GIT CON .gitignore
+METODO1
+creo allo stesso livello della cartella .git un file .gitignore
+
+1 faccio un 
+
+git add .gitignore
+
+git commit -m" aggiunta  file gitignore"
+
+2. 
+apro file .gitignore e vado a
+
+A) inserire il nome del file da ignorare esempio: filepersonale.txt
+oppure
+B) *.tipofile esempio *.txt e mi ignorerà tutti i file con quell'estensione
+oppure
+C) se voglio escludere tutti i file di un tipo tranne alcuni, scrivo
+*.tipofiledaescludere ----> * indica di prendere tutto
+!nomefiledaincludere.tipo---> ! indica delle eccezioni
+E) CON LE CARTELLE se ha file all'interno viene vista, se la voglio escludere sempre su .gitignore metto il suo nome 
+
+
+                                           GESTIONE DEI BRANCH
+                              BRANCH
+
+                                  HEAD
+                             Branch master
+                                   ^
+                                   |
+COMMIT1--->COMMIT2--->COMMIT3-->COMMIT4
+
+il branch punta all'ultimo commit in cui siamo
+
+Posso sviluuppare versioni parallele del nostro progetto e poi unirli successivamente
+
+
+git log -- all --decorate --oneline --graph----> ci da il percorso che seguono le nostre commit
+
+comando linux per mettere in una variabile un comando ed esegu
+
+alias pippo='git log -- all --decorate --oneline --graph'  ---> ogni volta che voglio eseguire quel comando basta che richiamo la variabile
+                                                                a cui ho assegnato il nome
+
+          CREO BRANCH ALLO STESSO LIVELLO(hanno in archivio tutti i commit precedenti alla creazione)
+
+DEFINIZIONE BRANCH =Un branch inizialmente è solo un etichetta con un puntatore che punta all'ultimo commit che abbiamo fatto
+
+
+git branch nomebranch----> creo uno o più branch esempio con nome fix ,dev test pippo
+git branch dev  
+
+LE DIRAMAZIONI VENGONO CREATE nel momento che nei nuovi branch faccio dei commit senno per ora sono solo delle diramazioni
+
+git checkout nomebranch ----> mi sposto verso altro branch
+
+vi nome file ----->     mi apre editor testo integrato , aprendo un file
+i ------>     mi inserisce testo nel file
+:wq----->  w sta per write q per quit quindi scrive poi esce
+
+ 
+git commit -am "testo del commit"---> permette di fare un git add. + un git commit -m"" sulla stessa riga
+
+                                   MERGIARE IN UN BRANCH IL CONTENUTO DI UN'ALTRO BRANCH
+
+git checkout nomebranchincuimergiare----> mi sposto nel branch che conterrà le modifiche di entrambi
+
+git diff nomeprimobranch..nomesecondobranch---> vedo le differenze tra i due branch
+
+git merge nomebranchdacuiprendereroba  ----> mi mergia la roba nel branch che ho scelto con quello in cui sono
+
+git branch ------>merged per saper quali branch sono stati uniti
+
+git checkout -b -----> nome del branch da creare e in cui effettuare il merge
+
+ELIMINO UN BRANCH
+
+git branch -d nomebranchunito---> la d piccola permette di unire branch che sono stati uniti(mergiati)
+
+git branch -D nomebranchchenonèstatounito---> la D piccola permette di cancellare un branch che non è ancora stato unito(non mergiato)
+
+                                               RISOLVERE CONFILITTI DI MERGE
+
+git merge --abort ---> annulla il comando di merge
+
+vi nome file ====> mi apro il file che è stato mergiato
+
+nella parte sopra vedo contenuto iniziale 
+parte sotto gli uguali vedo invece la parte che è stata aggiunta
+
+1 sposto cursore su riga che mi interessa togliere e premo dd
+
+2 uso comando i per inserire testo e cancello quella riga
+
+ora il solito :wq
+
+ora 
+git add.
+
+git commit oppure git commit -m" testo del commit"
+
+                                              COMANDI GIT IN REMOTO
+
+GitHub è un Hosring che ci permette di ospitare i progetti all'interno di esso 
+
+
+
+

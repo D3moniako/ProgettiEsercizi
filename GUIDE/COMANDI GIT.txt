@@ -258,10 +258,10 @@ METODO
 1
 git fetch upstream ----> mi sposto nell'url associato alla repo originale (chiamato da me upstream)
 
-git merge upstream/master --> faccio merge aggiungendo ad  upstream , il mio branch master(se non ero in master dovevo fare un checkout)
+git merge upstream/nomemiobranchinlocale --> faccio merge aggiungendo ad  upstream , il mio branch master(se non ero in master dovevo fare un checkout)
 
 METODO2
- git pull upstream master
+ git pull upstream nomemiobranchinlocale ---->>>>> NOTA DEVO STARE NEL BRANCH MIO IN LOCALE 
 
 CANCELLARE SERVER REMOTO DALLA LISTA SERVER COLLEGATI
 

@@ -1,0 +1,45 @@
+mkdir nomecartella------> mi crea una nuova cartella(makenewdirectory--->mkdr)
+cd nomecartella/ -------> dal percorso di partenza apre una cartella al suo interno(cd--->change directory)
+ls -a  -----------------> lista il contenuto della cartella( con a anche i file con punto che solitamente non sono mostrati.
+touch nomefile.tipo-----> crea un nuovo file di nome e tipo
+echo testodascriverenelfile > nomefile.tipo ------> mi crea un file scrivendoci roba dentro
+cat nomefile.tipo ------> leggo il contenuto del file  
+clear-----------------> pulisco la bash
+
+alias nomevariabile='comando'---> mi salva in una variabile il comando e richiamando la variabile tramite nome mi esegue il codice dentro
+
+vi nomefile.tipo ----> mi apre un editor di testo da bash
+                       nell'editor digito 
+                       i(insert) per aggiungere test
+
+                       per aggiungere nuova riga scrivo 
+                       new line Q                    
+
+                                         GITHUB REPOSITORY
+
+CONFIGURAZIONI INIZIALI
+indico nome 
+indico la disponibilità private o pubblic(privati se per clienti)
+aggiungo file readme di tipo md (meglio dei txt perchè posso usare markdown per inserire elementi html quali links)
+aggiungo il gitignore
+aggiungo una licensa
+
+AGGIUNGO LA REPOSITORY CHE HO IN LOCALE SE L'HO GIà CREATA
+creo un token di durata tot ----> vado in impostazioni su gihub---impostazioni developer--->personal access token 
+
+
+da bash
+
+git remote add origin link di git---> aggiunge a git un server remoto con come link del server remoto di nome origin e valore link 
+
+git push -u origin main  -----> git push serve per aggiungere i file in stage al nostro server remoto,-u specifica
+                                nella configurazione di default url del server che si vuole, cosi da non doverlo specificare 
+                                successivamente , origin è solo un nome per associare il nostro url al nostro server remoto
+
+
+
+
+
+
+
+

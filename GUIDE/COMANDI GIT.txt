@@ -176,6 +176,103 @@ git commit oppure git commit -m" testo del commit"
 
 GitHub è un Hosring che ci permette di ospitare i progetti all'interno di esso 
 
+git config --global user.email"soleroboo@gmail.com"======> permette di settare lo username del sito di host(nel nostro caso github) dentro git
+
+
+git config --global user.username"topolino"=============> permette di settare lo username del sito di host(nel nostro caso github) dentro git
+
+
+git remote -v   ----------->  con -v ,  mi da la lista dei server a cui sono collegato
+
+
+cat .git/config -----------> trovo le configurazioni di git, posso anche aprirla dalla sua cartella
+
+
+git remote show nomeserverremoto-----> esempio nome origin , cosi poddo vedere le info sul server
+
+git remote rename vecchionomeserverremoto nuovonomeserverremoto--> posso cosi rinominare i server remoti
+
+
+/////////////////////////////////////////////////////PULL ,FETCH. PUSH////////////////////////////////////////////////////////
+git fetch ------> permette di sincronizzarsi con il server remoto ,conoscendo di quante commit sono indietro , siamo noi a fare il merge manuale
+
+git merge nomeserverremoto/branchlocale  --->unisco cosi il branch su server con quello in locale esempio origin-master
+
+
+git pull -----> sincronizzo le info e in più unisco repository locale con repository remoto,
+
+
+git clone ---> permette di creare un clone di una repository o in locale 
+
+
+
+                                    GITHUB IL FORK(PULL)
+
+E'un clone della repository, viene eseguito dal servizio che stia usando per creare una copia della nostra repository
+, come se venisse usato il comando git clone ma a livello di server. Effettuando questa copia tramite github, avrò la possibilità di effettuare 
+modifiche , salvarle sul nostro account e fare una pull request per notificare il mantainer delle varie modifiche che abbiamo fatto.
+
+COME FARE UN FORK con github
+
+andiamo sulla pagina della repository di github clicco su pulsante fork in alto a destra, poi seleziono l'account dove 
+sia clonato il fork se la repository non  è mia,dopo mi fa la copia della repository, in alto a sinistra ho riferimento della 
+provenienza della nostra repository.
+
+2
+
+git clone indirizzourlclonata----> Clono su locale la repository appena copiata
+cd nome cartella------> cosi mi mostra il branch e posso iniziare le modifiche
+git add . ---->i soliti comandi pre push
+git commit -m "bla bla blra bira"----> i soliti comandi pre push
+git push -----> i soliti comandi pre push
+
+3
+ Dall'interfaccia di git vado a creare la pull request
+sotto a go to file clicclo su contribute e apro una pull request, nella pagina che si apre ci fa vedere le modifiche
+e clicco su create pull request dopo aver fatto un commento
+
+Il proprietario della repository originaria potrà quindi visionare la pull request e vederne i file per poi 
+accettarla nel caso con merge pull request
+
+git pull ----> scarico quindi la new repo forkata
+
+////////////////////////////////////
+
+
+git remote add upstream urlrepooriginale // cosi creo un collegamento a un server con nome upstreanm o pippo(decido io)
+
+                                          //  cosi posso fare un git fetch, pull,push per sincronizzare le nostre repository
+DA REPO PROPRIETARIA avrò la modifica nell'account github  originale
+
+git add nomefileaggiuntoOmdificato
+
+git commit -m""
+
+git push
+
+
+DA REPO  NON ORIGINALE NON AVRò la modifica effettuata nella repo  proprietaria
+
+DA REPO NON ORIGINALE faccio 
+METODO
+1
+git fetch upstream ----> mi sposto nell'url associato alla repo originale (chiamato da me upstream)
+
+git merge upstream/master --> faccio merge aggiungendo ad  upstream , il mio branch master(se non ero in master dovevo fare un checkout)
+
+METODO2
+ git pull upstream master
+
+
+COME FARE LA SINCRONIZZAZIONE DA REMOTO TRA DUE REPOSITORY
+
+
+
+
+
+
+
+
 
 
 

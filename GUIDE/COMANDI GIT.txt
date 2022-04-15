@@ -244,7 +244,7 @@ git remote add upstream urlrepooriginale // cosi creo un collegamento a un serve
                                           //  cosi posso fare un git fetch, pull,push per sincronizzare le nostre repository
 DA REPO PROPRIETARIA avrò la modifica nell'account github  originale
 
-git add nomefileaggiuntoOmdificato
+git add nomefileaggiuntomdificato
 
 git commit -m""
 
@@ -263,6 +263,9 @@ git merge upstream/master --> faccio merge aggiungendo ad  upstream , il mio bra
 METODO2
  git pull upstream master
 
+CANCELLARE SERVER REMOTO DALLA LISTA SERVER COLLEGATI
+
+git remote rm nome
 
 COME FARE LA SINCRONIZZAZIONE DA REMOTO TRA DUE REPOSITORY
 
